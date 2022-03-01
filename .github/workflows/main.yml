@@ -18,7 +18,7 @@ jobs:
         env:
           POSTGRES_USER: root
           POSTGRES_PASSWORD: 14041998
-          POSTGRES_DB: money_split
+          POSTGRES_DB: minibank
         ports:
           - 5432:5432
         options: >-
