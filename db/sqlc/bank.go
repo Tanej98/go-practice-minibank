@@ -70,13 +70,13 @@ func (bank *Bank) TransferTx(ctx context.Context, arg CreateTransferParams) (Tra
 			return err
 		}
 
-		if arg.FromAccountID < arg.ToAccountID{
-			result.FromAccount, result.ToAccount, err =  addMoney(ctx, q, arg.FromAccountID, arg.ToAccountID, -arg.Amount, arg.Amount)
+		if arg.FromAccountID < arg.ToAccountID {
+			result.FromAccount, result.ToAccount, err = addMoney(ctx, q, arg.FromAccountID, arg.ToAccountID, -arg.Amount, arg.Amount)
 			if err != nil {
 				return err
 			}
-		}else{
-			result.ToAccount, result.FromAccount, err =  addMoney(ctx, q, arg.ToAccountID, arg.FromAccountID, arg.Amount, -arg.Amount)
+		} else {
+			result.ToAccount, result.FromAccount, err = addMoney(ctx, q, arg.ToAccountID, arg.FromAccountID, arg.Amount, -arg.Amount)
 			if err != nil {
 				return err
 			}
@@ -88,8 +88,7 @@ func (bank *Bank) TransferTx(ctx context.Context, arg CreateTransferParams) (Tra
 	return result, err
 }
 
-
-func addMoney(ctx context.Context, q *Queries, fromAccount , toAccount, debitAmount, creditAmount int64) (account1 , account2 Account, err error){
+func addMoney(ctx context.Context, q *Queries, fromAccount, toAccount, debitAmount, creditAmount int64) (account1, account2 Account, err error) {
 	account1, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
 		ID:     fromAccount,
 		Amount: debitAmount,

@@ -29,4 +29,7 @@ test:
 fmt:
 	gofmt -s -w .
 
-.PHONY: postgres createdb dropdb migrateup migratedown postgresremove reset sqlc test fmt
+server:
+	go run main.go
+
+.PHONY: postgres createdb dropdb migrateup migratedown postgresremove reset sqlc test fmt server
